@@ -22,7 +22,7 @@ namespace Chess.Implementations
             this.boardWidth = boardWidth;
             this.interactor = interactor;
         }
-        public void beginNewGame()
+        public string beginNewGame()
         {
             this.interactor.sendMessage("Player A input your tokens");
             List<string> playerATokenNames = InputParser.getTokenNames(this.interactor.getUserInput());
@@ -61,6 +61,17 @@ namespace Chess.Implementations
                 }
             }
             interactor.sendMessage("Game Over");
+            if(this.playerATokens.Count > 0)
+            {
+                interactor.sendMessage("Player A Won!");
+            }
+            else
+            {
+                interactor.sendMessage("Player B Won!");
+            }
+            interactor.sendMessage("Enter 'Y' to play a new game");
+            string wantToPlay = interactor.getUserInput();
+            return wantToPlay;
         }
         private void assignTokensToPlayer(List<string> tokenNames, List<Token> tokenList, int x, int y)
         {

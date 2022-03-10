@@ -7,9 +7,13 @@ namespace Chess
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
-            GameManager game = new GameManager(5, 5, new ConsoleInteractor());
-            game.beginNewGame();
+            string wantToPlay = "Y";
+            while (wantToPlay.Equals("Y"))
+            {
+                GameManager game = new GameManager(5, 5, new ConsoleInteractor());
+                wantToPlay = game.beginNewGame();
+            }
+            
         }
     }
 }
